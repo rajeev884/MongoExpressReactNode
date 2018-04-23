@@ -18,5 +18,5 @@ require('./services/passportConfig');
 require('./routes/authRoutes')(app);
 mongoose.connect(keys.mongoURI);
 
-console.log("...Listening to port",PORT);
+console.log("...server running at",PORT);
 app.listen(PORT);
