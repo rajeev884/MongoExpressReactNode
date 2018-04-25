@@ -3,8 +3,9 @@ import { BrowserRouter,Route } from "react-router-dom";
 import Header from './Header';
 import { connect } from "react-redux";
 import * as actions from '../actions'
+import Landing from './Landing';
+import Dashboard from './Dashboard';
 
-const Landing = ()=><div>bcdjvj</div>
 class App extends Component{
     componentDidMount(){
         this.props.fetchusers();
@@ -13,8 +14,9 @@ class App extends Component{
         return(
             <div>
                 <Header/>
-                <BrowserRouter>
-                    <Route path="/" component={Landing} />
+                <BrowserRouter><div>
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/surveys" component={Dashboard} /></div>
                 </BrowserRouter>
             </div>
         );
