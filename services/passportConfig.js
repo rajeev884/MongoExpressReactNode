@@ -34,13 +34,13 @@ passport.use(
        
     // }
     async (accessToken, refreshToken, profile, done) => {
-        const existingUser = await user.findOne({ googleId: profile.id });
+        const existingUser = await user.findOne({ googleID: profile.id });
   
         if (existingUser) {
           return done(null, existingUser);
         }
   
-        const userr = await new user({ googleId: profile.id }).save();
+        const userr = await new user({ googleID: profile.id }).save();
         done(null, userr);
       }
 )
