@@ -15,9 +15,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./models/users');
+require('./models/survey');
 require('./services/passportConfig');
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static('client/build'));
+    const path = require('path');
+    app.use('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    })
+}
 mongoose.connect(keys.mongoURI);
 
 console.log("...server running at",PORT);
