@@ -8,6 +8,7 @@ import Payment from './Payments';
 import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton';
 import NotificationsIcon from 'material-ui/svg-icons/action/account-balance-wallet';
+
 class Header extends Component{
     renderElementRight(){
         switch(this.props.authReducer){
@@ -27,7 +28,7 @@ class Header extends Component{
                                 <NotificationsIcon />
                             </IconButton>
                         </Badge>
-                        <FlatButton  label="Logout" href='/api/logout'/>
+                        <FlatButton  label="Logout" labelStyle={{color:"#fff"}} href='/api/logout'/>
                         </div>;
         }
     }

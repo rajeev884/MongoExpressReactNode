@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const bodyParser =require('body-parser');
+
 app.use(bodyParser.json());
 app.use(cookieSession({
     maxAge:30*24*60*60*1000,
@@ -29,6 +30,7 @@ if(process.env.NODE_ENV==='production'){
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
 }
+
 mongoose.connect(keys.mongoURI);
 
 console.log("...server running at",PORT);
