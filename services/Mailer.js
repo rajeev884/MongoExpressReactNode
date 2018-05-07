@@ -6,7 +6,7 @@ class Mailer extends helper.Mail{
     constructor({subject,recipients},content){
         super();
         this.sendgridApi = sendgrid(keys.sendgridKey);
-        this.form_email = new helper.Email('no-reply@FeedBackMan.com');
+        this.from_email = new helper.Email('no-reply@FeedBackMan.com');
         this.subject=subject;
         this.body = new helper.Content('text/html',content);
         this.recipients = this.formatAddresses(recipients);
@@ -34,13 +34,19 @@ class Mailer extends helper.Mail{
         this.addPersonalization(personalize);
     }
     async send(){
-        const request = this.sendgridApi.emptyRequest({
-            method:'POST',
-            path:'/v3/mail/send',
-            body:this.toJSON()
-        });
-        const response = await this.sendgridApi.API(request);
-        return response;
+        try{
+            const request = this.sendgridApi.emptyRequest({
+                method:'POST',
+                path:'/v3/mail/send',
+                body:this.toJSON()
+            });
+            const response = await this.sendgridApi.API(request);
+            return response;
+        }
+        catch(err){
+            console.log('arr',err.response.body.errors)
+        }
+        
     }
 
 }
