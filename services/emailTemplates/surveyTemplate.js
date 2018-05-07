@@ -1,3 +1,17 @@
+const keys = require('../../config/keys')
 module.exports= survey=>{
-    return `<div>${survey.body}</div>`
+    return `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            </head>
+            <body>
+            <p>${survey.body}</p>
+            <div><a href="${keys.redirectDomain}/api/thanks">YES</a></div>
+            <div><a href="${keys.redirectDomain}/api/thanks">NO</a></div>
+            </body>
+            </html>`
 }
